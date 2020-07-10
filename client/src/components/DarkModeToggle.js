@@ -7,7 +7,6 @@ function DarkModeToggle(){
         return item ? JSON.parse(item) : true;
     })
 
-    
     function toggleMode(){
         setDarkMode(!darkmode)
         window.localStorage.setItem('darkMode', JSON.stringify(!darkmode))

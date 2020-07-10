@@ -28,28 +28,28 @@ export default class PlantList extends Component {
       })
   }
 
-  // handleSearch = (e) =>{
-  //   this.setState({
-  //    searchTerm: e.target.value
-  //   })
-  // }
+  handleSearch = (e) =>{
+    this.setState({
+     searchTerm: e.target.value
+    })
+  }
 
-  // componentDidUpdate(prevProps, prevState){
-  //   if(this.state.searchTerm !== prevState.searchTerm){
+  componentDidUpdate(prevProps, prevState){
+    if(this.state.searchTerm !== prevState.searchTerm){
       
-  //     const filteredPlants = this.state.plants.filter( plants =>{
-  //      if(plants.name.includes(this.state.searchTerm)){
-  //       this.setState({
-  //         plants: plants
-  //       })
-        
-  //      }
-  //     })
+      const filteredPlants = this.state.plants.filter( plants =>{
+       return plants.name.includes(this.state.searchTerm)
+         
+    })
+    
+    this.setState({
+        plants: filteredPlants
+             })
       
-  //     console.log(filteredPlants);
+      console.log(filteredPlants);
       
-  //   }
-  // }
+    }
+  }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
