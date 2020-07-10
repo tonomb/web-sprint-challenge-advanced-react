@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
+import DarkModeToggle from './components/DarkModeToggle'
 
 import "./App.css";
 
@@ -22,7 +23,8 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='app'>
+      <DarkModeToggle />
       <Router>
         <nav className="container">
           <h1>

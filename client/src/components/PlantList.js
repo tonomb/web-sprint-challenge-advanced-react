@@ -6,7 +6,8 @@ export default class PlantList extends Component {
   constructor(){
     super();
     this.state={
-      plants: []
+      plants: [],
+      searchTerm: ''
     }
   }
 
@@ -16,19 +17,51 @@ export default class PlantList extends Component {
   componentDidMount(){
     axios.get('http://localhost:3333/plants')
       .then(res =>{
+        console.log(res.data.plantsData);
+        
         this.setState({
           plants: res.data.plantsData
         })
       })
       .catch(err =>{
         console.log(err);
-        
       })
   }
+
+  // handleSearch = (e) =>{
+  //   this.setState({
+  //    searchTerm: e.target.value
+  //   })
+  // }
+
+  // componentDidUpdate(prevProps, prevState){
+  //   if(this.state.searchTerm !== prevState.searchTerm){
+      
+  //     const filteredPlants = this.state.plants.filter( plants =>{
+  //      if(plants.name.includes(this.state.searchTerm)){
+  //       this.setState({
+  //         plants: plants
+  //       })
+        
+  //      }
+  //     })
+      
+  //     console.log(filteredPlants);
+      
+  //   }
+  // }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
+      <>
+      <form className='search-form'>
+        <input 
+          type='text'
+          placeholder='Search Plants'
+          onChange={this.handleSearch}></input>
+        <button>Search</button>
+      </form>
       <main className="plant-list">
         {this.state?.plants?.map((plant) => (
           <div className="plant-card" key={plant.id}>
@@ -52,6 +85,7 @@ export default class PlantList extends Component {
           </div>
         ))}
       </main>
+      </>
     );
   }
 }
